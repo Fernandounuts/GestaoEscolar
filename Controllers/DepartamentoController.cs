@@ -45,6 +45,7 @@ public class DepartamentoController : Controller
     return View(departamento);
   }
 
+  // GET: Departamento/Update
   public async Task<IActionResult> Edit(long? id)
   {
     if (id == null)
@@ -59,5 +60,10 @@ public class DepartamentoController : Controller
     }
 
     return View(depto);
+  }
+
+  public bool DepartamentoExists(long? id)
+  {
+    return _context.Departamentos.Any(e => e.DepartamentoID == id);
   }
 }

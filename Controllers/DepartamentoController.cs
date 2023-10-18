@@ -66,4 +66,44 @@ public class DepartamentoController : Controller
   {
     return _context.Departamentos.Any(e => e.DepartamentoID == id);
   }
+
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> Edit(Departamento departamento)
+  {
+    if (ModelState.IsValid)
+    {
+      try
+      {
+        _context.Update(departamento);
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateException)
+      {
+        if (!DepartamentoExists(departamento.DepartamentoID))
+        {
+          return NotFound();
+        }
+      }
+      return RedirectToAction(nameof(Index));
+    }
+    return View(departamento);
+  }
+
+  // GET:/ Detalhes
+  public async Task<IActionResult> Details(long? id)
+  {
+    if (id == null)
+    {
+      return NotFound();
+    }
+
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+
+    if (depto == null)
+    {
+      return NotFound();
+    }
+    return View(depto);
+  }
 }

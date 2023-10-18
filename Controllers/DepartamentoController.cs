@@ -106,4 +106,40 @@ public class DepartamentoController : Controller
     }
     return View(depto);
   }
+
+  // GEt: Departamento/Delete
+  public async Task<IActionResult> Delete(long? id)
+  {
+    if (id == null)
+    {
+      return NotFound();
+    }
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(d => d.DepartamentoID == id);
+
+    if (depto == null)
+    {
+      return NotFound();
+    }
+
+    return View(depto);
+  }
+
+  [HttpPost, HttpDelete]
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> DeletConfirmed(long? id)
+  {
+    if (id == null)
+    {
+      return NotFound();
+    }
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+
+    if (depto == null)
+    {
+      return NotFound();
+    }
+    _context.Departamentos.Remove(depto);
+    await _context.SaveChangesAsync();
+    return RedirectToAction(nameof(Index));
+  }
 }

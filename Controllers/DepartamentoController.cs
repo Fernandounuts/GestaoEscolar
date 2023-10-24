@@ -140,6 +140,9 @@ public class DepartamentoController : Controller
     }
     _context.Departamentos.Remove(depto);
     await _context.SaveChangesAsync();
+
+    TempData["Message"] = $"Departamento {depto.Nome.ToUpper()} foi removido";
+    
     return RedirectToAction(nameof(Index));
   }
 }

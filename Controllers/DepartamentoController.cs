@@ -53,7 +53,7 @@ public class DepartamentoController : Controller
       return NotFound();
     }
 
-    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoId == id);
     if (depto == null)
     {
       return NotFound();
@@ -64,7 +64,7 @@ public class DepartamentoController : Controller
 
   public bool DepartamentoExists(long? id)
   {
-    return _context.Departamentos.Any(e => e.DepartamentoID == id);
+    return _context.Departamentos.Any(e => e.DepartamentoId == id);
   }
 
   [HttpPost]
@@ -80,7 +80,7 @@ public class DepartamentoController : Controller
       }
       catch (DbUpdateException)
       {
-        if (!DepartamentoExists(departamento.DepartamentoID))
+        if (!DepartamentoExists(departamento.DepartamentoId))
         {
           return NotFound();
         }
@@ -98,7 +98,7 @@ public class DepartamentoController : Controller
       return NotFound();
     }
 
-    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoId == id);
 
     if (depto == null)
     {
@@ -114,7 +114,7 @@ public class DepartamentoController : Controller
     {
       return NotFound();
     }
-    var depto = await _context.Departamentos.SingleOrDefaultAsync(d => d.DepartamentoID == id);
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(d => d.DepartamentoId == id);
 
     if (depto == null)
     {
@@ -132,7 +132,7 @@ public class DepartamentoController : Controller
     {
       return NotFound();
     }
-    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);
+    var depto = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoId == id);
 
     if (depto == null)
     {

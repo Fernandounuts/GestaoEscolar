@@ -15,4 +15,10 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Instituicao\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Instituicao\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Instituicao\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
